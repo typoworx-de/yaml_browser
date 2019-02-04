@@ -1,0 +1,35 @@
+{
+    "name": "christianessl/yaml_browser",
+    "type": "typo3-cms-extension",
+    "description": "Browse and debug YAML definitions in TYPO3 in a similar way to the TypoScript Object Browser.",
+    "keywords": [
+        "TYPO3",
+        "extension"
+    ],
+    "license": ["GPL-2.0-or-later"],
+    "homepage": "https://christianessl.at",
+    "authors": [
+        {
+            "name": "Christian Essl",
+            "role": "Developer"
+        }
+    ],
+    "version": "0.1.0",
+    "require": {
+        "typo3/cms-core": "^8.7.0|| ^9.5.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "ChristianEssl\\YamlBrowser\\": "Classes"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "ChristianEssl\\YamlBrowser\\Tests\\": "Tests"
+        }
+    },
+    "replace": {
+        "yaml_browser": "self.version",
+        "typo3-ter/yaml_browser": "self.version"
+    }
+}
