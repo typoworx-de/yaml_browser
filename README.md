@@ -3,6 +3,8 @@ Browse and debug YAML definitions in TYPO3 in a similar way to the "TypoScript O
 
 @TODO:
 - style module
+- regex mode
+- switch for filtering yaml config types
 - add texts to module + translation
 - timeout when typing
 - readme
