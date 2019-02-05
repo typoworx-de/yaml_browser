@@ -13,6 +13,7 @@ namespace ChristianEssl\YamlBrowser\Controller;
  ***/
 
 use ChristianEssl\YamlBrowser\Configuration\YamlConfigurationManager;
+use ChristianEssl\YamlBrowser\Utility\TreeUtility;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use TYPO3\CMS\Backend\Template\ModuleTemplate;
@@ -44,6 +45,12 @@ class YamlBrowserController
      */
     protected $yamlConfigurationmanager;
 
+
+    /**
+     * @var PageRenderer
+     */
+    protected $pageRenderer;
+
     /**
      * @var string
      */
@@ -54,6 +61,7 @@ class YamlBrowserController
         $this->moduleTemplate = GeneralUtility::makeInstance(ModuleTemplate::class);
         $this->objectManager = GeneralUtility::makeInstance(ObjectManager::class);
         $this->yamlConfigurationmanager = GeneralUtility::makeInstance(YamlConfigurationManager::class);
+        $this->pageRenderer = GeneralUtility::makeInstance(PageRenderer::class);
     }
 
     /**
@@ -63,8 +71,9 @@ class YamlBrowserController
      */
     public function mainAction(ServerRequestInterface $request): ResponseInterface
     {
-        $this->loadJavaScript();
         $configuration = $this->yamlConfigurationmanager->getConfiguration();
+        $this->loadJavaScript($configuration);
+        $this->loadStyleSheets();
 
         return $this->renderResponse([
             'configuration' => $configuration
@@ -89,13 +98,28 @@ class YamlBrowserController
     }
 
     /**
+     * @param array $configuration
+     *
      * @return void
      */
-    protected static function loadJavaScript()
+    protected function loadJavaScript($configuration) : void
     {
-        $pageRenderer = GeneralUtility::makeInstance(PageRenderer::class);
-        $pageRenderer->loadRequireJsModule('TYPO3/CMS/YamlBrowser/YamlBrowser', 'function(YamlBrowser) {
-			YamlBrowser.init();
-		}');
+        $configurationJson = TreeUtility::getJSON($configuration);
+        $this->pageRenderer->loadRequireJsModule(
+            'TYPO3/CMS/YamlBrowser/YamlBrowser',
+            "function(YamlBrowser) {
+                var configurationJson = '".$configurationJson."';
+			    YamlBrowser.init(configurationJson);
+		    }"
+        );
+    }
+
+    /**
+     * @return void
+     */
+    protected function loadStyleSheets() : void
+    {
+        $this->pageRenderer->addCssFile('EXT:yaml_browser/Resources/Public/Css/Contrib/ui.fancytree.css');
+        $this->pageRenderer->addCssFile('EXT:yaml_browser/Resources/Public/Css/YamlBrowser.css');
     }
 }
