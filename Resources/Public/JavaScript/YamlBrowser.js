@@ -39,6 +39,11 @@ define(["jquery", "jquery.fancytree", "jquery.fancytree.filter"], function($) {
         self.initResetButton();
     };
 
+    /**
+     * Load up the configuration
+     *
+     * @param {string} configurationJson
+     */
     YamlBrowser.loadTreeConfiguration = function (configurationJson) {
         self.configuration = JSON.parse(configurationJson);
     };
@@ -76,14 +81,12 @@ define(["jquery", "jquery.fancytree", "jquery.fancytree.filter"], function($) {
             var searchValue = $(this).val();
             var tree = $.ui.fancytree.getTree();
 
-            if (searchValue.length < 4) {
-                return;
-            }
-
             //@todo timeout when typing
 
-            if(e && e.which === $.ui.keyCode.ESCAPE || $.trim(searchValue) === "") {
+            if(e && e.which === $.ui.keyCode.ESCAPE || searchValue.trim() === "") {
                 self.resetSearch();
+            } else if (searchValue.length < 4) {
+                return;
             } else {
                 var matches = tree.filterNodes.call(tree, searchValue);
                 self.$matchesContainer.text('(' + matches + ' matches)'); // @todo translate matches
