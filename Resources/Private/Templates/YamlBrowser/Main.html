@@ -10,9 +10,19 @@
             </label>
 
             <div class="form-group">
-                <select class="form-control">
-                    <option value="" selected="selected">All</option>
-                    <option value="setup">Setup</option>
+                <select id="yaml-filter" class="form-control">
+                    <option value=""
+                            data-action="{f:uri.action(action:'main')}"
+                            {f:if(condition:filter, else:'selected')}>
+                        {f:translate(key:'all', extensionName:'yaml_browser')}
+                    </option>
+                    <f:for each="{options}" as="option">
+                        <option value="{option}"
+                                data-action="{f:uri.action(action:'main', arguments:{filter:option})}"
+                                {f:if(condition:'{filter} == {option}', then:'selected')}>
+                            {option}
+                        </option>
+                    </f:for>
                 </select>
             </div>
         </div>
@@ -46,6 +56,9 @@
     <div class="panel panel-space panel-default">
         <div class="panel-heading">
             <f:translate key="yaml.tree" extensionName="yaml_browser" />
+            <f:if condition="{filter}">
+                <f:translate key="yaml.tree.for" arguments="{0:filter}" extensionName="yaml_browser" />
+            </f:if>
             <span id="matches"></span>
         </div>
 

@@ -21,6 +21,7 @@ use TYPO3\CMS\Core\Http\HtmlResponse;
 use TYPO3\CMS\Core\Page\PageRenderer;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
+use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use TYPO3\CMS\Fluid\View\StandaloneView;
 
@@ -66,6 +67,8 @@ class YamlBrowserController
     }
 
     /**
+     * Shows the yaml browser
+     *
      * @param ServerRequestInterface $request the current request
      *
      * @return ResponseInterface the response with the content
@@ -73,12 +76,47 @@ class YamlBrowserController
     public function mainAction(ServerRequestInterface $request): ResponseInterface
     {
         $configuration = $this->yamlConfigurationmanager->getConfiguration();
+        $options = array_keys($configuration);
+
+        $filter = null;
+        if ($this->hasFilter($request)) {
+            $filter = $this->getFilter($request);
+            $configuration = $configuration[$filter];
+        }
+
         $this->loadJavaScript($configuration);
         $this->loadStyleSheets();
 
         return $this->renderResponse([
-            'configuration' => $configuration
+            'options' => $options,
+            'filter' => $filter
         ]);
+    }
+
+    /**
+     * Should the view be filtered?
+     *
+     * @param ServerRequestInterface $request
+     *
+     * @return bool
+     */
+    protected function hasFilter(ServerRequestInterface $request) : bool
+    {
+        $queryParameters = $request->getQueryParams();
+        return isset($queryParameters['tx__']) && isset($queryParameters['tx__']['filter']);
+    }
+
+
+    /**
+     * Get the filter parameter
+     *
+     * @param ServerRequestInterface $request
+     *
+     * @return string
+     */
+    protected function getFilter(ServerRequestInterface $request) : string
+    {
+        return $request->getQueryParams()['tx__']['filter'];
     }
 
     /**

@@ -18,6 +18,9 @@
             <trans-unit id="yaml.tree">
                 <source>YAML TREE</source>
             </trans-unit>
+            <trans-unit id="yaml.tree.for">
+                <source>for "%s"</source>
+            </trans-unit>
             <trans-unit id="browse">
                 <source>Browse</source>
             </trans-unit>
@@ -32,6 +35,9 @@
             </trans-unit>
             <trans-unit id="matches">
                 <source>(%s matches)</source>
+            </trans-unit>
+            <trans-unit id="all">
+                <source>all</source>
             </trans-unit>
         </body>
     </file>

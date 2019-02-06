@@ -43,6 +43,7 @@ define(["jquery", "jquery.fancytree", "jquery.fancytree.filter"], function($) {
         self.initTree();
         self.initSearch();
         self.initResetButton();
+        self.initOptionFilter();
     };
 
     /**
@@ -140,6 +141,16 @@ define(["jquery", "jquery.fancytree", "jquery.fancytree.filter"], function($) {
         self.$searchInput.val('');
         self.$matchesContainer.text('');
         self.$yamlTree.fancytree('getTree').clearFilter();
+    };
+
+    /**
+     * Filter the yaml configuration by an option
+     */
+    YamlBrowser.initOptionFilter = function () {
+        $('#yaml-filter').on('change', function(e) {
+            var $option = $("option:selected", this);
+            document.location.href = $option.data('action');
+        });
     };
 
     return YamlBrowser;
