@@ -15,6 +15,9 @@
             <trans-unit id="module.title">
                 <source>YAML Browser</source>
             </trans-unit>
+            <trans-unit id="yaml.tree">
+                <source>YAML TREE</source>
+            </trans-unit>
         </body>
     </file>
 </xliff>
