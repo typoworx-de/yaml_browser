@@ -1,0 +1,24 @@
+<div class="form-inline">
+    <div class="form-group">
+        <label class="control-label">
+            <f:translate key="browse" extensionName="yaml_browser" />
+        </label>
+
+        <div class="form-group">
+            <select id="yaml-filter" class="form-control">
+                <option value=""
+                        data-action="{f:uri.action(action:'main')}"
+                        {f:if(condition:filter, else:'selected')}>
+                {f:translate(key:'all', extensionName:'yaml_browser')}
+                </option>
+                <f:for each="{options}" as="option">
+                    <option value="{option}"
+                            data-action="{f:uri.action(action:'main', arguments:{filter:option})}"
+                            {f:if(condition:'{filter} == {option}', then:'selected')}>
+                    {option}
+                    </option>
+                </f:for>
+            </select>
+        </div>
+    </div>
+</div>

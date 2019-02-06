@@ -21,7 +21,6 @@ use TYPO3\CMS\Core\Http\HtmlResponse;
 use TYPO3\CMS\Core\Page\PageRenderer;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use TYPO3\CMS\Fluid\View\StandaloneView;
 
@@ -54,6 +53,11 @@ class YamlBrowserController
     protected $pageRenderer;
 
     /**
+     * @var string[]
+     */
+    protected $partialRootPaths = ['EXT:yaml_browser/Resources/Private/Partials/'];
+
+    /**
      * @var string
      */
     protected $templatePathAndFilename = 'EXT:yaml_browser/Resources/Private/Templates/YamlBrowser/Main.html';
@@ -81,7 +85,7 @@ class YamlBrowserController
         $filter = null;
         if ($this->hasFilter($request)) {
             $filter = $this->getFilter($request);
-            $configuration = $configuration[$filter];
+            $configuration = (isset($configuration[$filter])) ? $configuration[$filter] : $configuration;
         }
 
         $this->loadJavaScript($configuration);
@@ -127,6 +131,7 @@ class YamlBrowserController
     protected function renderResponse($variables = []) : HtmlResponse
     {
         $mainView = $this->objectManager->get(StandaloneView::class);
+        $mainView->setPartialRootPaths($this->partialRootPaths);
         $mainView->setTemplatePathAndFilename($this->templatePathAndFilename);
         $mainView->assignMultiple($variables);
 

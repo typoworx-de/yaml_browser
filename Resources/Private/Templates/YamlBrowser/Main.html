@@ -3,55 +3,9 @@
 
     <h1><f:translate key="module.title" extensionName="yaml_browser" /></h1>
 
-    <div class="form-inline">
-        <div class="form-group">
-            <label class="control-label">
-                <f:translate key="browse" extensionName="yaml_browser" />
-            </label>
-
-            <div class="form-group">
-                <select id="yaml-filter" class="form-control">
-                    <option value=""
-                            data-action="{f:uri.action(action:'main')}"
-                            {f:if(condition:filter, else:'selected')}>
-                        {f:translate(key:'all', extensionName:'yaml_browser')}
-                    </option>
-                    <f:for each="{options}" as="option">
-                        <option value="{option}"
-                                data-action="{f:uri.action(action:'main', arguments:{filter:option})}"
-                                {f:if(condition:'{filter} == {option}', then:'selected')}>
-                            {option}
-                        </option>
-                    </f:for>
-                </select>
-            </div>
-        </div>
-    </div>
-
-    <div class="form-inline">
-        <div class="form-group">
-            <label class="control-label" for="yaml-search">
-                <f:translate key="search" extensionName="yaml_browser" />
-            </label>
-
-            <div class="form-group">
-                <div class="form-control-clearable">
-                    <input id="yaml-search" class="form-control" autocomplete="off" />
-                    <button id="reset-search" class="btn btn-default">
-                        <f:translate key="clear" extensionName="yaml_browser" />
-                        &times;
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="checkbox">
-        <label for="yaml-regexsearch">
-            <input type="checkbox" class="checkbox" name="yaml-regexsearch" id="yaml-regexsearch" value="1">
-            <f:translate key="regex" extensionName="yaml_browser" />
-        </label>
-    </div>
+    <f:render partial="FilterElement" arguments="{_all}" />
+    <f:render partial="SearchElement" arguments="{_all}" />
+    <f:render partial="RegexElement" arguments="{_all}" />
 
     <div class="panel panel-space panel-default">
         <div class="panel-heading">

@@ -3,7 +3,5 @@ Browse and debug YAML definitions in TYPO3 in a similar way to the "TypoScript O
 
 @TODO:
 - generate yaml for selected option
-- matches element position
 - readme
-- refactoring, sonarlint
 - packagist / ter
