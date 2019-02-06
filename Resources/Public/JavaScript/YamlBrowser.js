@@ -71,6 +71,8 @@ define(["jquery", "jquery.fancytree", "jquery.fancytree.filter"], function($) {
                 mode: 'dimm'
             }
         });
+
+        $(".fancytree-container").addClass("fancytree-connectors");
     };
 
     /**

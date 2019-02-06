@@ -1,0 +1,64 @@
+
+ul.fancytree-connectors.fancytree-container li {
+    background-image: url("../Images/vline.gif");
+}
+
+span.fancytree-empty,
+span.fancytree-vline,
+span.fancytree-expander,
+span.fancytree-icon,
+span.fancytree-checkbox,
+span.fancytree-drag-helper-img,
+#fancytree-drop-marker {
+    background-image: url("../Images/icons.gif");
+}
+
+.fancytree-connectors .fancytree-exp-n span.fancytree-expander,
+.fancytree-connectors .fancytree-exp-nl span.fancytree-expander {
+    background-image: url("../Images/icons.gif");
+}
+
+.fancytree-loading span.fancytree-expander,
+.fancytree-loading span.fancytree-expander:hover,
+.fancytree-statusnode-loading span.fancytree-icon,
+.fancytree-statusnode-loading span.fancytree-icon:hover,
+span.fancytree-icon.fancytree-icon-loading {
+    background-image: url("../Images/loading.gif");
+}
+
+.fancytree-container.fancytree-rtl span.fancytree-connector,
+.fancytree-container.fancytree-rtl span.fancytree-expander,
+.fancytree-container.fancytree-rtl span.fancytree-icon,
+.fancytree-container.fancytree-rtl span.fancytree-drag-helper-img {
+    background-image: url("../Images/icons-rtl.gif");
+}
+.fancytree-container.fancytree-rtl .fancytree-exp-n span.fancytree-expander,
+.fancytree-container.fancytree-rtl .fancytree-exp-nl span.fancytree-expander {
+    background-image: none;
+}
+.fancytree-container.fancytree-rtl.fancytree-connectors .fancytree-exp-n span.fancytree-expander,
+.fancytree-container.fancytree-rtl.fancytree-connectors .fancytree-exp-nl span.fancytree-expander {
+    background-image: url("../Images/icons-rtl.gif");
+}
+ul.fancytree-container.fancytree-rtl.fancytree-connectors li {
+    background-image: url("../Images/vline-rtl.gif");
+}
+ul.fancytree-container.fancytree-rtl li.fancytree-lastsib,
+ul.fancytree-container.fancytree-rtl.fancytree-no-connector > li {
+    background-image: none;
+}
+#fancytree-drop-marker.fancytree-rtl {
+    background-image: url("../Images/icons-rtl.gif");
+}
+
+ul.fancytree-container {
+    border: none;
+    outline: none;
+}
+
+.fancytree-exp-c span.fancytree-expander,
+.fancytree-exp-e span.fancytree-expander {
+    background-color: white;
+    margin-top: 0;
+    padding-top: 2px;
+}
