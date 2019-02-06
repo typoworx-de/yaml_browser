@@ -3,9 +3,9 @@ Browse and debug YAML definitions in TYPO3 in a similar way to the "TypoScript O
 
 @TODO:
 - generate yaml for selected option
-- regex mode
 - switch for filtering yaml config types
 - add texts to module + translation
+- matches element position
 - readme
 - refactoring, sonarlint
 - packagist / ter

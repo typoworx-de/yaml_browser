@@ -106,7 +106,16 @@ define(["jquery", "jquery.fancytree", "jquery.fancytree.filter"], function($) {
         if(event && event.which === $.ui.keyCode.ESCAPE || searchValue.trim() === "") {
             self.resetSearch();
         } else if (searchValue.length > 3) {
-            var matches = tree.filterNodes.call(tree, searchValue);
+            var matches = null;
+
+            if($("#yaml-regexsearch").is(":checked")) {
+                matches = tree.filterNodes.call(tree, function(node) {
+                    return new RegExp(searchValue, "i").test(node.title);
+                });
+            } else {
+                matches = tree.filterNodes.call(tree, searchValue);
+            }
+
             self.$matchesContainer.text('(' + matches + ' matches)'); // @todo translate matches
         }
     };
