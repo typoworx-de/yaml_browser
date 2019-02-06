@@ -20,7 +20,8 @@ define(["jquery", "jquery.fancytree", "jquery.fancytree.filter"], function($) {
 
         configuration: null,
         searchTimeout: null,
-        searchTimeoutDelay: 500
+        searchTimeoutDelay: 500,
+        matchesText: ''
     };
     var self = YamlBrowser;
 
@@ -28,14 +29,16 @@ define(["jquery", "jquery.fancytree", "jquery.fancytree.filter"], function($) {
      * Initialize the yaml browser
      *
      * @param {string} configurationJson
+     * @param {string} matchesText
      */
-    YamlBrowser.init = function (configurationJson) {
+    YamlBrowser.init = function (configurationJson, matchesText) {
         self.loadTreeConfiguration(configurationJson);
 
         self.$yamlTree = $('#yaml-tree');
         self.$searchInput = $('#yaml-search');
         self.$resetButton = $('#reset-search');
         self.$matchesContainer = $('#matches');
+        self.matchesText = matchesText;
 
         self.initTree();
         self.initSearch();
@@ -116,7 +119,7 @@ define(["jquery", "jquery.fancytree", "jquery.fancytree.filter"], function($) {
                 matches = tree.filterNodes.call(tree, searchValue);
             }
 
-            self.$matchesContainer.text('(' + matches + ' matches)'); // @todo translate matches
+            self.$matchesContainer.text(self.matchesText.replace('%s', matches));
         }
     };
 

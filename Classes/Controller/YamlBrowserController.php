@@ -21,6 +21,7 @@ use TYPO3\CMS\Core\Http\HtmlResponse;
 use TYPO3\CMS\Core\Page\PageRenderer;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
+use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use TYPO3\CMS\Fluid\View\StandaloneView;
 
 /**
@@ -105,11 +106,14 @@ class YamlBrowserController
     protected function loadJavaScript($configuration) : void
     {
         $configurationJson = TreeUtility::getJSON($configuration);
+        $matchesText = LocalizationUtility::translate('matches', 'yaml_browser');
+
         $this->pageRenderer->loadRequireJsModule(
             'TYPO3/CMS/YamlBrowser/YamlBrowser',
             "function(YamlBrowser) {
                 var configurationJson = '".$configurationJson."';
-			    YamlBrowser.init(configurationJson);
+                var matchesText = '".$matchesText."';
+			    YamlBrowser.init(configurationJson, matchesText);
 		    }"
         );
     }

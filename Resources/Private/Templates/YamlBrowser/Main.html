@@ -6,7 +6,7 @@
     <div class="form-inline">
         <div class="form-group">
             <label class="control-label">
-                Browse
+                <f:translate key="browse" extensionName="yaml_browser" />
             </label>
 
             <div class="form-group">
@@ -21,13 +21,16 @@
     <div class="form-inline">
         <div class="form-group">
             <label class="control-label" for="yaml-search">
-                Search
+                <f:translate key="search" extensionName="yaml_browser" />
             </label>
 
             <div class="form-group">
                 <div class="form-control-clearable">
                     <input id="yaml-search" class="form-control" autocomplete="off" />
-                    <button id="reset-search" class="btn btn-default">Clear &times;</button>
+                    <button id="reset-search" class="btn btn-default">
+                        <f:translate key="clear" extensionName="yaml_browser" />
+                        &times;
+                    </button>
                 </div>
             </div>
         </div>
@@ -36,7 +39,7 @@
     <div class="checkbox">
         <label for="yaml-regexsearch">
             <input type="checkbox" class="checkbox" name="yaml-regexsearch" id="yaml-regexsearch" value="1">
-            Regular expressions
+            <f:translate key="regex" extensionName="yaml_browser" />
         </label>
     </div>
 
