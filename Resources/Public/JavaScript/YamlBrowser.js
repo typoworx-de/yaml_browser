@@ -13,11 +13,14 @@ define(["jquery", "jquery.fancytree", "jquery.fancytree.filter"], function($) {
     "use strict";
 
     var YamlBrowser = {
-        configuration: null,
         $yamlTree: null,
         $searchInput: null,
         $resetButton: null,
-        $matchesContainer: null
+        $matchesContainer: null,
+
+        configuration: null,
+        searchTimeout: null,
+        searchTimeoutDelay: 500
     };
     var self = YamlBrowser;
 
@@ -79,21 +82,33 @@ define(["jquery", "jquery.fancytree", "jquery.fancytree.filter"], function($) {
      * The search input
      */
     YamlBrowser.initSearch = function () {
-        self.$searchInput.on('keyup', function(e) {
+        self.$searchInput.on('keyup', function(event) {
             var searchValue = $(this).val();
-            var tree = $.ui.fancytree.getTree();
 
-            //@todo timeout when typing
-
-            if(e && e.which === $.ui.keyCode.ESCAPE || searchValue.trim() === "") {
-                self.resetSearch();
-            } else if (searchValue.length < 4) {
-                return;
-            } else {
-                var matches = tree.filterNodes.call(tree, searchValue);
-                self.$matchesContainer.text('(' + matches + ' matches)'); // @todo translate matches
+            if (self.searchTimeout !== null) {
+                clearTimeout(self.searchTimeout);
             }
+
+            self.searchTimeout = setTimeout(function () {
+                self.executeSearch(searchValue, event);
+            }, self.searchTimeoutDelay);
         }).focus();
+    };
+
+    /**
+     * @param {string} searchValue
+     * @param {object} event
+     */
+    YamlBrowser.executeSearch = function (searchValue, event) {
+        var tree = $.ui.fancytree.getTree();
+        self.searchTimeout = null;
+
+        if(event && event.which === $.ui.keyCode.ESCAPE || searchValue.trim() === "") {
+            self.resetSearch();
+        } else if (searchValue.length > 3) {
+            var matches = tree.filterNodes.call(tree, searchValue);
+            self.$matchesContainer.text('(' + matches + ' matches)'); // @todo translate matches
+        }
     };
 
     /**
