@@ -1,6 +1,11 @@
 # TYPO3 Extension "yaml_browser"
 Browse and debug YAML definitions in TYPO3 in a way similar to the "TypoScript Object Browser".
 
+[![Latest Stable Version](https://poser.pugx.org/christianessl/yaml_browser/v/stable)](https://packagist.org/packages/christianessl/yaml_browser)
+[![Total Downloads](https://poser.pugx.org/christianessl/yaml_browser/downloads)](https://packagist.org/packages/christianessl/yaml_browser)
+[![Latest Unstable Version](https://poser.pugx.org/christianessl/yaml_browser/v/unstable)](https://packagist.org/packages/christianessl/yaml_browser)
+[![License](https://poser.pugx.org/christianessl/yaml_browser/license)](https://packagist.org/packages/christianessl/yaml_browser)
+
 ## What does it do?
 
 Since version 8.x, TYPO3 increasingly uses YAML configuration files for configuring specific parts of the CMS. 
