@@ -1,6 +1,7 @@
 # TYPO3 Extension "yaml_browser"
 Browse and debug YAML definitions in TYPO3 in a way similar to the "TypoScript Object Browser".
 
+[![Code Climate](https://codeclimate.com/github/IndyIndyIndy/yaml_browser.svg)](https://codeclimate.com/github/IndyIndyIndy/yaml_browser)
 [![Latest Stable Version](https://poser.pugx.org/christianessl/yaml_browser/v/stable)](https://packagist.org/packages/christianessl/yaml_browser)
 [![Total Downloads](https://poser.pugx.org/christianessl/yaml_browser/downloads)](https://packagist.org/packages/christianessl/yaml_browser)
 [![Latest Unstable Version](https://poser.pugx.org/christianessl/yaml_browser/v/unstable)](https://packagist.org/packages/christianessl/yaml_browser)
