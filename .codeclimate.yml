@@ -1,0 +1,5 @@
+## Exclude external libraries from automatic code review
+exclude_patterns:
+- "Resources/Public/JavaScript/Contrib/jquery.fancytree.filter.js"
+- "Resources/Public/JavaScript/Contrib/jquery.fancytree.js"
+- "Resources/Public/JavaScript/Contrib/jquery.fancytree.ui-deps.js"
