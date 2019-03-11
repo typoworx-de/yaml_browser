@@ -97,9 +97,15 @@ class YamlConfigurationManager
                     strpos($extensionName, DIRECTORY_SEPARATOR)
                 );
 
+                $extensionPath = substr(
+                    $file->getPathname(),
+                    0,
+                    strpos($file->getPathname(), $extensionName) + strlen($extensionName)+1
+                );
+
                 if(ExtensionManagementUtility::isLoaded($extensionName))
                 {
-                    $availableConfigurationFiles[] = $file;
+                    $availableConfigurationFiles[] = str_replace($extensionPath, 'FILE:EXT:' . $extensionName, $file);
                 }
             }
 
