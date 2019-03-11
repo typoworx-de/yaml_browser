@@ -28,7 +28,11 @@ You can look up the YAML in a tree view, do a quick search for a text string and
 
 ## Requirements
 
-Currently supports TYPO3 9.5 LTS.
+~~Currently supports TYPO3 9.5 LTS.~~
+
+Added TYPO3 8.x LTS support (by info@typoworx.com).
+
+This patched version scan's for all yaml-files inside ```/typo3conf/*/**``` (inside Extensions)
 
 ## 1. Installation
 
