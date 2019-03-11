@@ -1,5 +1,5 @@
 {
-    "name": "christianessl/yaml_browser",
+    "name": "typoworx/yaml_browser",
     "type": "typo3-cms-extension",
     "description": "Browse and debug YAML definitions in TYPO3 in a similar way to the TypoScript Object Browser.",
     "keywords": [
@@ -9,6 +9,10 @@
     "license": ["GPL-2.0-or-later"],
     "homepage": "https://christianessl.at",
     "authors": [
+        {
+          "name": "Gabriel Kaufmann",
+          "role": "Developer"
+        },
         {
             "name": "Christian Essl",
             "role": "Developer"
