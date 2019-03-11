@@ -69,10 +69,26 @@ class YamlConfigurationManager
      */
     protected function getSiteConfiguration() : array
     {
-        return $this->getMatchingConfigurationInPath(
-            Environment::getConfigPath() . '/sites',
-            'config.yaml'
-        );
+        if (version_compare(TYPO3_branch, '9.0', '>='))
+        {
+            return $this->getMatchingConfigurationInPath(
+                Environment::getConfigPath() . '/sites',
+                'config.yaml'
+            );
+        }
+        else
+        {
+            $fileFinder = Finder::create();
+            $fileFinder->files()->in(constant('PATH_typo3conf'))->name('*.yaml');
+
+            $availableConfigurationFiles = [];
+            foreach($fileFinder as $file)
+            {
+                die(var_dump($file));
+            }
+
+            return iterator_to_array($fileFinder);
+        }
     }
 
     /**
