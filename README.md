@@ -1,6 +1,12 @@
 # TYPO3 Extension "yaml_browser"
 Browse and debug YAML definitions in TYPO3 in a way similar to the "TypoScript Object Browser".
 
+[![Code Climate](https://codeclimate.com/github/IndyIndyIndy/yaml_browser.svg)](https://codeclimate.com/github/IndyIndyIndy/yaml_browser)
+[![Latest Stable Version](https://poser.pugx.org/christianessl/yaml_browser/v/stable)](https://packagist.org/packages/christianessl/yaml_browser)
+[![Total Downloads](https://poser.pugx.org/christianessl/yaml_browser/downloads)](https://packagist.org/packages/christianessl/yaml_browser)
+[![Latest Unstable Version](https://poser.pugx.org/christianessl/yaml_browser/v/unstable)](https://packagist.org/packages/christianessl/yaml_browser)
+[![License](https://poser.pugx.org/christianessl/yaml_browser/license)](https://packagist.org/packages/christianessl/yaml_browser)
+
 ## What does it do?
 
 Since version 8.x, TYPO3 increasingly uses YAML configuration files for configuring specific parts of the CMS. 
@@ -22,7 +28,11 @@ You can look up the YAML in a tree view, do a quick search for a text string and
 
 ## Requirements
 
-Currently supports TYPO3 9.5 LTS.
+~~Currently supports TYPO3 9.5 LTS.~~
+
+Added TYPO3 8.x LTS support (by info@typoworx.com).
+
+This patched version scan's for all yaml-files inside ```/typo3conf/*/**``` (inside Extensions)
 
 ## 1. Installation
 
