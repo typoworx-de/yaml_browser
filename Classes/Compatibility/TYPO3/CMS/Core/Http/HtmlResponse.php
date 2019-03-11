@@ -12,7 +12,13 @@ namespace TYPO3\CMS\Core\Http;
  *
  * The TYPO3 project - inspiring people to share!
  */
+
 /**
+ * This file is cloned from TYPO3 9.x to provide TYPO3 8.x support.
+ *
+ * (c) 2019 Gabriel Kaufmann <info@typoworx.com>, https://www.typoworx.com
+ *
+ * -------------------------------------------------
  * A default HTML response object
  *
  * Highly inspired by ZF zend-diactoros

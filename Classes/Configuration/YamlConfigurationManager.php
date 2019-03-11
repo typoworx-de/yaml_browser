@@ -8,6 +8,8 @@ namespace ChristianEssl\YamlBrowser\Configuration;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  *
+ *  (c) 2019 Gabriel Kaufmann <info@typoworx.com>, https://www.typoworx.com
+ *           added TYPO3 8.x support
  *  (c) 2019 Christian Eßl <indy.essl@gmail.com>, https://christianessl.at
  *
  ***/
