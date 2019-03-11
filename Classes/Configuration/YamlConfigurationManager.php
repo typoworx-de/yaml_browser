@@ -15,6 +15,7 @@ namespace ChristianEssl\YamlBrowser\Configuration;
 use Symfony\Component\Finder\Finder;
 use TYPO3\CMS\Core\Configuration\Loader\YamlFileLoader;
 use TYPO3\CMS\Core\Core\Environment;
+use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
 use TYPO3\CMS\Form\Mvc\Configuration\ConfigurationManagerInterface;
@@ -82,12 +83,27 @@ class YamlConfigurationManager
             $fileFinder->files()->in(constant('PATH_typo3conf'))->name('*.yaml');
 
             $availableConfigurationFiles = [];
+
+            /** @var \Symfony\Component\Finder\SplFileInfo $file */
             foreach($fileFinder as $file)
             {
-                die(var_dump($file));
+                $extensionName = substr(
+                    $file->getPathname(),
+                    strpos($file->getPathname(), DIRECTORY_SEPARATOR . 'ext' . DIRECTORY_SEPARATOR) + 5
+                );
+                $extensionName = substr(
+                    $extensionName,
+                    0,
+                    strpos($extensionName, DIRECTORY_SEPARATOR)
+                );
+
+                if(ExtensionManagementUtility::isLoaded($extensionName))
+                {
+                    $availableConfigurationFiles[] = $file;
+                }
             }
 
-            return iterator_to_array($fileFinder);
+            return $availableConfigurationFiles;
         }
     }
 
