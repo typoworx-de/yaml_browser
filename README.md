@@ -30,7 +30,7 @@ You can look up the YAML in a tree view, do a quick search for a text string and
 
 ~~Currently supports TYPO3 9.5 LTS.~~
 
-Added TYPO3 8.x LTS support (by info@typoworx.com).
+Added TYPO3 8.x LTS support (by info@typoworx.com) in Branch develop-gkn (for composer use version-string "dev-master").
 
 This patched version scan's for all yaml-files inside ```/typo3conf/*/**``` (inside Extensions)
 
